@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+metadata:
+  name: python-app-k-s
+build:
+  artifacts:
+    - image: flaskapp
+      sync:
+        infer:
+          - '**/*.py'
+deploy:
+  kubectl:
+    manifests:
+      - flask_app_deployment.yaml
+      - flask-app-service.yaml
